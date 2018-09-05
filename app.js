@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
+var cors = require('cors')
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -24,12 +25,17 @@ db.on('error', function(err){
 // Init App
 const app = express();
 
+const PORT = process.env.PORT || 8080;
+
 // Bring in Models
 let Article = require('./models/article');
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+//CORS Middleware
+app.use(cors());
 
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
@@ -97,6 +103,6 @@ app.use('/users', users);
 app.use('/pfc', pfc);
 
 // Start Server
-app.listen(3000, function(){
-  console.log('Server started on port 3000...');
+app.listen(PORT, function(){
+  console.log('Server started');
 });
