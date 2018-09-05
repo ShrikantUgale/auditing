@@ -5,13 +5,16 @@ block content
   form(method='POST', action='/users/register')
     #form-group
       label Name:
-      input.form-control(name='name', type='text')
+      input.form-control(name='name', type='text', placeholder="First Name")
     #form-group
       label Email:
-      input.form-control(name='email', type='text')
+      input.form-control(name='email', type='text', placeholder="youareawesome@xyz.com")
     #form-group
-      label Username:
-      input.form-control(name='username',type='text')
+      label CompanyID:
+      input.form-control(name='companyid',type='text', placeholder="Enter company ID provided to you")
+    //- #form-group
+    //-   label Username:
+    //-   input.form-control(name='username',type='text')
     #form-group
       label Password:
       input.form-control(name='password',type='password')

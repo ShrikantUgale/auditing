@@ -6,6 +6,8 @@ const passport = require('passport');
 // Bring in User Model
 let User = require('../models/user');
 
+let Company = require('../models/company');
+
 // Register Form
 router.get('/register', function (req, res) {
   res.render('register');
@@ -13,23 +15,30 @@ router.get('/register', function (req, res) {
 
 // Register Proccess
 router.post('/register', async function (req, res) {
+
   const name = req.body.name;
   const email = req.body.email;
-  const username = req.body.username;
+  const companyid = req.body.companyid;
   const password = req.body.password;
   const password2 = req.body.password2;
 
   req.checkBody('name', 'Name is required').notEmpty();
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('username', 'Username is required').notEmpty();
+  req.checkBody('companyid', 'Company ID is required').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
   req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
   let errors = req.validationErrors();
-  let user = await User.findOne({ $or: [{ email: req.body.email }, { username: req.body.username }] });
+  let user = await User.findOne({ email: req.body.email });
   if (user) {
     req.flash('danger', 'You are already registered');
+    return res.redirect('/users/register');
+  }
+
+  let company = await Company.findOne({ companyid: req.body.companyid });
+  if (!company) {
+    req.flash('danger', 'Please enter valid Company ID');
     return res.redirect('/users/register');
   }
   if (errors) {
@@ -40,7 +49,7 @@ router.post('/register', async function (req, res) {
     let newUser = new User({
       name: name,
       email: email,
-      username: username,
+      companyid: companyid,
       password: password
     });
 
