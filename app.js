@@ -85,23 +85,16 @@ app.get('*', function(req, res, next){
 
 // Home Route
 app.get('/', function(req, res){
-  Article.find({}, function(err, articles){
-    if(err){
-      console.log(err);
-    } else {
-      res.render('index', {
-        title:'Articles',
-        articles: articles
-      });
-    }
-  });
+  res.render('welcome');
 });
 
 // Route Files
 let articles = require('./routes/articles');
 let users = require('./routes/users');
+let pfc = require('./routes/pfc');
 app.use('/articles', articles);
 app.use('/users', users);
+app.use('/pfc', pfc);
 
 // Start Server
 app.listen(3000, function(){
