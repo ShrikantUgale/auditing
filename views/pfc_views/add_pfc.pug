@@ -5,24 +5,27 @@ block content
   form(method='POST', action='/pfc/add')
     #form-group
       label Operation Number:
-      input.form-control(name='operationNum', type='number')
+      input.form-control(name='operationNum', type='number', , readonly = {isEdit})
     #form-group
       label Work Station Number/ Machine Number:
-      input.form-control(name='machineNum', type='text')
+      input.form-control(name='machineNum', type='text', readonly = { isEdit })
+    #form-group
+      label Operation Description:
+      input.form-control(name='operationDesc', type='text', readonly = { isEdit })
     #form-group
       label Offline Assly Flow:
-      input.form-control(name='offAssly', type='text')
+      input.form-control(name='offAssly', type='text', readonly = { isEdit })
     #form-group
       label Product Characteristics:
-      textarea.form-control(name='prodChars')
+      textarea.form-control(name='prodChars', readonly = { isEdit })
     #form-group
       label Process Characteristics:
-      textarea.form-control(name='processChars')
+      textarea.form-control(name='processChars', readonly = { isEdit })
     #form-group
       label Char:
-      input.form-control(name='char', type='text')
+      input.form-control(name='char', type='text', readonly = { isEdit })
     #form-group
       label Open Issues/ Remarks:
-      input.form-control(name='remarks', type='text')
+      input.form-control(name='remarks', type='text', readonly = { isEdit })
     br
     input.btn.btn-primary(type='submit',value='Submit')

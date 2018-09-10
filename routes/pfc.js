@@ -15,7 +15,7 @@ router.get('/add', ensureAuthenticated, function (req, res) {
 
 // Show Route
 router.get('/show', ensureAuthenticated, function (req, res) {
-  PFC.find({}, function (err, pfcs) {
+  PFC.find({ companyid: req.user.companyid }, function (err, pfcs) {
     if (err) {
       console.log(err);
     } else {
@@ -32,7 +32,8 @@ router.post('/add', ensureAuthenticated, function (req, res) {
   req.checkBody('operationNum', 'Operation Number is required').notEmpty();
   req.checkBody('machineNum', 'Machine Number is required').notEmpty();
   req.checkBody('prodChars', 'Produt characteristics are required').notEmpty();
-  req.checkBody('processChars', 'Process Chars are required').notEmpty();
+  req.checkBody('processChars', 'Process Chars are required').notEmpty();operationDesc
+  req.checkBody('operationDesc', 'Operation description required').notEmpty();
 
   // Get Errors
   let errors = req.validationErrors();
@@ -51,6 +52,8 @@ router.post('/add', ensureAuthenticated, function (req, res) {
     pfc.processChars = req.body.processChars;
     pfc.char = req.body.char;
     pfc.remarks = req.body.remarks;
+    pfc.companyid = req.user.companyid;
+    pfc.addedBy = req.user.email;
 
 
     pfc.save(function (err) {

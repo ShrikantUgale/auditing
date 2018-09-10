@@ -10,6 +10,10 @@ let pfcSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    operationDesc: {
+        type: String,
+        required: true
+    },
     offAssly: {
         type: String,
     },
@@ -26,6 +30,14 @@ let pfcSchema = mongoose.Schema({
     },
     remarks: {
         type: String,
+    },
+    companyid: {
+        type: String,
+        required: true
+    },
+    addedBy: {
+        type: String,
+        required: true
     }
 });
 
