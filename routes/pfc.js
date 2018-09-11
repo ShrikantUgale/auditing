@@ -47,6 +47,7 @@ router.post('/add', ensureAuthenticated, function (req, res) {
     let pfc = new PFC();
     pfc.operationNum = req.body.operationNum;
     pfc.machineNum = req.body.machineNum;
+    pfc.operationDesc = req.body.operationDesc;
     pfc.offAssly = req.body.offAssly;
     pfc.prodChars = req.body.prodChars;
     pfc.processChars = req.body.processChars;
