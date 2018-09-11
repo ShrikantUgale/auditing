@@ -32,7 +32,7 @@ router.post('/add', ensureAuthenticated, function (req, res) {
   req.checkBody('operationNum', 'Operation Number is required').notEmpty();
   req.checkBody('machineNum', 'Machine Number is required').notEmpty();
   req.checkBody('prodChars', 'Produt characteristics are required').notEmpty();
-  req.checkBody('processChars', 'Process Chars are required').notEmpty();operationDesc
+  req.checkBody('processChars', 'Process Chars are required').notEmpty();
   req.checkBody('operationDesc', 'Operation description required').notEmpty();
 
   // Get Errors
