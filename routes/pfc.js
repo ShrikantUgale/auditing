@@ -97,7 +97,7 @@ router.post('/edit/:id', ensureAuthenticated, function (req, res) {
   article.body = req.body.body;
   let query = { _id: req.params.id }
 
-  Article.update(query, article, function (err) {
+  PFC.update(query, article, function (err) {
     if (err) {
       console.log(err);
       return;
@@ -115,11 +115,11 @@ router.get('/delete/:id', function (req, res) {
   }
 
   let query = { _id: req.params.id }
-  Article.findById(req.params.id, function (err, article) {
+  PFC.findById(req.params.id, function (err, article) {
     if (article.author != req.user.name) {
       res.status(500).send();
     } else {
-      Article.remove(query, function (err) {
+      PFC.remove(query, function (err) {
         if (err) {
           console.log(err);
         }
