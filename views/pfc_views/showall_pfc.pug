@@ -5,5 +5,5 @@ block content
   ul.list-group
     each pfc, i in pfcs
       li.list-group-item
-        a(href="#")= pfc.machineNum
+        a(href="/pfc/"+pfc._doc._id)= pfc.description
         //- a(href="/articles/"+pfc._id)= pfc.machineNum

@@ -19,9 +19,15 @@ router.get('/show', ensureAuthenticated, function (req, res) {
     if (err) {
       console.log(err);
     } else {
+      const pfcObj = pfcs.map((pfc) => {
+        return {
+          ...pfc,
+          description: `${pfc.machineNum} - ${pfc.operationDesc}`
+        }
+      });
       res.render('pfc_views/showall_pfc', {
         title: 'List PFC',
-        pfcs: pfcs
+        pfcs: pfcObj
       });
     }
   });
