@@ -130,14 +130,13 @@ router.get('/delete/:id', function (req, res) {
   });
 });
 
-// Get Single Article
+// Get Single PFC
 router.get('/:id', function (req, res) {
-  Article.findById(req.params.id, function (err, article) {
-    User.find({ name: article.author }, function (err, user) {
-      res.render('article', {
-        article: article,
+  PFC.findById(req.params.id, function (err, pfc) {
+      res.render('pfc_views/show_pfc', {
+        pfc: pfc,
+        edit: true
       });
-    });
   });
 });
 

@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  h3 #{title}
+  form(method='POST', action='/pfc/add')
+    #form-group
+      label Operation Number:
+      input.form-control(name='operationNum', type='number', value=pfc.operationNum, readonly = edit)
+    #form-group
+      label Work Station Number/ Machine Number:
+      input.form-control(name='machineNum', type='text', value=pfc.machineNum, readonly = edit)
+    #form-group
+      label Operation Description:
+      input.form-control(name='operationDesc', type='text', value=pfc.operationDesc, readonly = edit)
+    #form-group
+      label Offline Assly Flow:
+      input.form-control(name='offAssly', type='text', value=pfc.offAssly, readonly = edit)
+    #form-group
+      label Product Characteristics:
+      textarea.form-control(name='prodChars', readonly = edit) #{pfc.prodChars}
+    #form-group
+      label Process Characteristics:
+      textarea.form-control(name='processChars', readonly = edit) #{pfc.processChars}
+
+    #form-group
+      label Char:
+      input.form-control(name='char', type='text', value=pfc.char, readonly = edit)
+    #form-group
+      label Open Issues/ Remarks:
+      input.form-control(name='remarks', type='text', value=pfc.remarks, readonly = edit)
+    br
+    //- input.btn.btn-primary(type='submit',value='Submit')
