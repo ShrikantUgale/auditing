@@ -131,7 +131,7 @@ router.get('/delete/:id', function (req, res) {
 });
 
 // Get Single PFC
-router.get('/:id', function (req, res) {
+router.get('/:id', ensureAuthenticated, function (req, res) {
   PFC.findById(req.params.id, function (err, pfc) {
       res.render('pfc_views/show_pfc', {
         pfc: pfc,
