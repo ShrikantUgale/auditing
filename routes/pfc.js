@@ -9,7 +9,7 @@ let User = require('../models/user');
 // Add Route
 router.get('/add', ensureAuthenticated, function (req, res) {
   res.render('pfc_views/add_pfc', {
-    title: 'Add PFC'
+    title: 'Add Process'
   });
 });
 
@@ -26,7 +26,7 @@ router.get('/show', ensureAuthenticated, function (req, res) {
         }
       });
       res.render('pfc_views/showall_pfc', {
-        title: 'List PFC',
+        title: 'List Process',
         pfcs: pfcObj
       });
     }
@@ -46,7 +46,7 @@ router.post('/add', ensureAuthenticated, function (req, res) {
 
   if (errors) {
     res.render('pfc_views/add_pfc', {
-      title: 'Add PFC',
+      title: 'Add Process',
       errors: errors
     });
   } else {
@@ -68,7 +68,7 @@ router.post('/add', ensureAuthenticated, function (req, res) {
         console.log(err);
         return;
       } else {
-        req.flash('success', 'PFC Added');
+        req.flash('success', 'Process Added');
         res.redirect('/pfc/show');
       }
     });
