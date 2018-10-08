@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   h3 #{title}
-  form(method='POST', action='/pfc/add')
+  form()
     #form-group
       label Operation Number:
       input.form-control(name='operationNum', type='number', value=pfc.operationNum, readonly = edit)
@@ -12,6 +12,9 @@ block content
     #form-group
       label Operation Description:
       input.form-control(name='operationDesc', type='text', value=pfc.operationDesc, readonly = edit)
+    #form-group
+      label Main Assly Flow:
+      input.form-control(name='mainAssly', type='text', value=pfc.mainAssly, readonly = edit)
     #form-group
       label Offline Assly Flow:
       input.form-control(name='offAssly', type='text', value=pfc.offAssly, readonly = edit)
@@ -29,4 +32,4 @@ block content
       label Open Issues/ Remarks:
       input.form-control(name='remarks', type='text', value=pfc.remarks, readonly = edit)
     br
-    //- input.btn.btn-primary(type='submit',value='Submit')
+    a.btn.btn-default(href='/pfc/edit/'+pfc._id) Edit

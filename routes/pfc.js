@@ -61,6 +61,7 @@ router.post('/add', ensureAuthenticated, function (req, res) {
     pfc.remarks = req.body.remarks;
     pfc.companyid = req.user.companyid;
     pfc.addedBy = req.user.email;
+    pfc.mainAssly = req.body.offAssly;
 
 
     pfc.save(function (err) {

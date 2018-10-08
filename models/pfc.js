@@ -38,6 +38,9 @@ let pfcSchema = mongoose.Schema({
     addedBy: {
         type: String,
         required: true
+    },
+    mainAssly: {
+        type: String,
     }
 });
 
